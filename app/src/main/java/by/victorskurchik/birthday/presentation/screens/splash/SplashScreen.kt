@@ -1,4 +1,4 @@
-package by.victorskurchik.birthday.screens.splash
+package by.victorskurchik.birthday.presentation.screens.splash
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import by.victorskurchik.birthday.screens.Screen
+import by.victorskurchik.birthday.presentation.screens.Screen
 import kotlinx.coroutines.delay
 
 @Composable

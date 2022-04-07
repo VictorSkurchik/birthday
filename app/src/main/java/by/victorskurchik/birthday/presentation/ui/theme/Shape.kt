@@ -1,4 +1,4 @@
-package by.victorskurchik.birthday.ui.theme
+package by.victorskurchik.birthday.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

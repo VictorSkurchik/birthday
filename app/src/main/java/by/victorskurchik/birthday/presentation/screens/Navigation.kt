@@ -1,14 +1,15 @@
-package by.victorskurchik.birthday
+package by.victorskurchik.birthday.presentation.screens
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import by.victorskurchik.birthday.screens.Screen
-import by.victorskurchik.birthday.screens.add.AddBirthday
-import by.victorskurchik.birthday.screens.details.BirthdayDetailsScreen
-import by.victorskurchik.birthday.screens.main.MainScreen
-import by.victorskurchik.birthday.screens.splash.SplashScreen
+import by.victorskurchik.birthday.presentation.screens.add.AddBirthday
+import by.victorskurchik.birthday.presentation.screens.details.BirthdayDetailsScreen
+import by.victorskurchik.birthday.presentation.screens.main.MainScreen
+import by.victorskurchik.birthday.presentation.screens.main.MainViewModel
+import by.victorskurchik.birthday.presentation.screens.splash.SplashScreen
 
 @Composable
 fun Navigation() {
@@ -16,7 +17,8 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = Screen.MainScreen.route) {
         composable(route = Screen.MainScreen.route) {
-            MainScreen()
+            val viewModel = hiltViewModel<MainViewModel>()
+            MainScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.AddBirthdayScreen.route) {
             AddBirthday()

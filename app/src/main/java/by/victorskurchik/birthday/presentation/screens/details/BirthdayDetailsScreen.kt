@@ -1,4 +1,4 @@
-package by.victorskurchik.birthday.screens.details
+package by.victorskurchik.birthday.presentation.screens.details
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

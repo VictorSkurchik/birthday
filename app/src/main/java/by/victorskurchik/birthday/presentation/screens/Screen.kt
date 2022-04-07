@@ -1,4 +1,4 @@
-package by.victorskurchik.birthday.screens
+package by.victorskurchik.birthday.presentation.screens
 
 sealed class Screen(val route: String) {
 

@@ -1,4 +1,4 @@
-package by.victorskurchik.birthday.screens.add
+package by.victorskurchik.birthday.presentation.screens.add
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
