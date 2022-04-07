@@ -7,6 +7,7 @@ import by.victorskurchik.birthday.domain.entities.Birthday
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,10 +21,9 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _birthdays.value = listOf(
-                Birthday("Ivan", "123"),
-                Birthday("Ivan2", "1233")
-            )
+            birthdayRepository.fetchBirthdays().collect {
+                _birthdays.value = it
+            }
         }
     }
 }

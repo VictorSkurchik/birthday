@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import by.victorskurchik.birthday.presentation.screens.add.AddBirthday
+import by.victorskurchik.birthday.presentation.screens.add.AddBirthdayViewModel
 import by.victorskurchik.birthday.presentation.screens.details.BirthdayDetailsScreen
 import by.victorskurchik.birthday.presentation.screens.main.MainScreen
 import by.victorskurchik.birthday.presentation.screens.main.MainViewModel
@@ -21,7 +22,8 @@ fun Navigation() {
             MainScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.AddBirthdayScreen.route) {
-            AddBirthday()
+            val viewModel = hiltViewModel<AddBirthdayViewModel>()
+            AddBirthday(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.BirthdayDetailsScreen.route) {
             BirthdayDetailsScreen()

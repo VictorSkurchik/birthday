@@ -2,6 +2,7 @@ package by.victorskurchik.birthday.data.db
 
 import androidx.room.*
 import by.victorskurchik.birthday.data.db.entities.BirthdayEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BirthdayDao {
@@ -16,5 +17,5 @@ interface BirthdayDao {
     suspend fun delete(entity: BirthdayEntity)
 
     @Query("SELECT * from ${BirthdayEntity.TABLE_NAME}")
-    suspend fun getAll(): List<BirthdayEntity>
+    fun getAllBirthdaysFlow(): Flow<List<BirthdayEntity>>
 }

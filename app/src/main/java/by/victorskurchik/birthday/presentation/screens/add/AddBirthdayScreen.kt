@@ -11,27 +11,32 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import by.victorskurchik.birthday.domain.entities.Birthday
 import by.victorskurchik.birthday.format
+import by.victorskurchik.birthday.presentation.screens.Screen
 import by.victorskurchik.birthday.toDate
 import java.util.*
 
 @Composable
-fun AddBirthday() {
+fun AddBirthday(
+    navController: NavController,
+    viewModel: AddBirthdayViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        var name by remember { mutableStateOf("") }
+        var fullName by remember { mutableStateOf("") }
         var date by remember { mutableStateOf<Date>(Calendar.getInstance().time) }
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            value = name,
-            onValueChange = { value -> name = value },
-            label = { Text("Name") },
+            value = fullName,
+            onValueChange = { value -> fullName = value },
+            label = { Text("Full Name") },
         )
 
         OutlinedTextField(
@@ -43,8 +48,12 @@ fun AddBirthday() {
         )
 
         Button(
-            onClick = { /*TODO*/ },
-            enabled = name.isNotBlank(),
+            onClick = {
+                val birthday = Birthday(fullName, date.format())
+                viewModel.addBirthday(birthday)
+                navController.navigate(Screen.MainScreen.route)
+            },
+            enabled = fullName.isNotBlank(),
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
                 disabledBackgroundColor = Color.Gray
@@ -53,10 +62,4 @@ fun AddBirthday() {
             Text(text = "Save")
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AddBirthdayPreview() {
-    AddBirthday()
 }

@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -23,13 +23,15 @@ fun MainScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = { TopAppBar(title = { Text("Birthdays") }) },
         floatingActionButton = {
-            Button(onClick = { /*TODO*/ }) {
-                Icon(Icons.Filled.Add, "add")
-            }
-        }
+            FloatingActionButton(onClick = {
+                navController.navigate(Screen.AddBirthdayScreen.route)
+            }) { Icon(Icons.Rounded.Add, "add") }
+        },
     ) {
-        LazyColumn(
+
+    LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
             birthdays.value.forEach { birthday ->
