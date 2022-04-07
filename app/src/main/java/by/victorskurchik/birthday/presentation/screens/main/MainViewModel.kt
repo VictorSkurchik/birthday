@@ -26,4 +26,10 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
+    fun deleteBirthday(birthday: Birthday) {
+        viewModelScope.launch {
+            birthdayRepository.deleteBirthday(birthday)
+        }
+    }
 }
